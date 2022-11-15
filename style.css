@@ -30,6 +30,8 @@ body {
   /* margin-bottom: 8rem; */
   display: flex;
 
+  height: 42rem;
+
   font-size: 2rem;
   opacity: 0;
   transition: opacity 1s;
@@ -102,6 +104,7 @@ body {
   border: none;
   font-size: 2rem;
   padding: 2rem 5rem;
+  margin-top: 4rem;
   border-radius: 0.7rem;
   color: white;
   background-color: orangered;
@@ -123,4 +126,16 @@ body {
   margin: 2rem;
   border: 3rem solid white;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 2rem;
 }

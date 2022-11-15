@@ -3,6 +3,7 @@
 // Dom Elements
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
+console.log(btn);
 
 // Convert the population
 const formatPopulation = n => {
@@ -13,7 +14,10 @@ const formatPopulation = n => {
 
 // render country and add it to the countries container
 const renderCountry = function (country, className = '') {
+  console.log(country);
   const [currency] = Object.entries(country.currencies);
+  const [language] = Object.entries(country.languages);
+  console.log(language);
   const html = `
     <article class="country ${className}">
       <img class="country__img" src="${
@@ -25,7 +29,7 @@ const renderCountry = function (country, className = '') {
         <p class="country__row"><span>👫</span>${formatPopulation(
           country.population
         )} people</p>
-        <p class="country__row"><span>🗣️</span>${country.languages.fil}</p>
+        <p class="country__row"><span>🗣️</span>${language[1]}</p>
         <p class="country__row"><span>💰</span>${currency[0]}</p>
       </div>
     </article>
@@ -56,9 +60,22 @@ const getData = function (countryName) {
         .then(data => {
           const [neighbour] = data;
           renderCountry(neighbour, 'neighbour');
+        })
+        .catch(err => {
+          const messageEl = document.createElement('p');
+          messageEl.insertAdjacentText('beforeend', 'This is an Island');
+          console.log(messageEl);
+
+          messageEl.classList.add('message');
+
+          countriesContainer.appendChild(messageEl);
         });
     });
 };
 
 // Starting point
-getData('canada');
+
+btn.addEventListener('click', () => {
+  btn.disabled = true;
+  return getData('canada');
+});
